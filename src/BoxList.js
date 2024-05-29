@@ -10,13 +10,20 @@ const BoxList = () => {
     { id: uuid(), bgcolor: "SkyBlue" },
     { id: uuid(), bgcolor: "MediumPurple" },
   ];
-  const [boxes, setBoxes] = useState(INITIAL_STATE);
+  //const [boxes, setBoxes] = useState(INITIAL_STATE);
+  const [boxes, setBoxes] = useState([]);
   const addBox = (newBox) => {
+    const updatedBoxes = [...boxes, { ...newBox, id: uuid() }];
+    console.log(updatedBoxes);
     setBoxes((boxes) => [...boxes, { ...newBox, id: uuid() }]);
   };
 
   return (
     <div>
+      <div className="BoxList-form">
+        <h3>Shopping List</h3>
+        <NewBoxForm addBox={addBox} />
+      </div>
       <div className="BoxList-boxes">
         {boxes.map((box) => (
           <Box
@@ -26,9 +33,6 @@ const BoxList = () => {
             height={box.height}
           />
         ))}
-      </div>
-      <div className="BoxList-form">
-        <NewBoxForm addBox={addBox} />
       </div>
     </div>
   );

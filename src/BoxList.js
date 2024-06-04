@@ -21,7 +21,7 @@ const BoxList = () => {
   return (
     <div>
       <div className="BoxList-form">
-        <h3>Shopping List</h3>
+        <h3>Colored Boxes</h3>
         <NewBoxForm addBox={addBox} />
       </div>
       <div className="BoxList-boxes">
